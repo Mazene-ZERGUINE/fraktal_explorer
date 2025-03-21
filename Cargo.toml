@@ -1,0 +1,20 @@
+[package]
+name = "frakta-explorer"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies]
+fraktals = { path = "fraktals" }
+worker = { path = "worker" }
+common = { path = "common" }
+networking = {path = "networking"}
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+
+[workspace]
+members = [ "fraktals", "common", "worker", "networking"]
+
+[dev-dependencies]
+rustfmt = "0.10.0"
