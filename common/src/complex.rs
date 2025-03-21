@@ -1,20 +1,43 @@
+//! Complex number module for arithmetic and mathematical operations.
+
 use serde::{Deserialize, Serialize};
 
+/// Represents a complex number with real (`re`) and imaginary (`im`) parts.
 #[derive(Debug, Deserialize, Serialize, Clone, Copy)]
 pub struct Complex {
+  /// Real part of the complex number.
   pub re: f64,
+  /// Imaginary part of the complex number.
   pub im: f64,
 }
 
+/// Trait defining basic operations for complex numbers.
 pub trait ComplexTrait {
+  /// Constructs a new complex number with the given real and imaginary parts.
   fn new(re: f64, im: f64) -> Self;
+
+  /// Returns the sum of two complex numbers.
   fn add(&self, other: &Self) -> Self;
+
+  /// Returns the argument (angle) of the complex number in radians.
   fn argument(&self) -> f64;
+
+  /// Divides the complex number by another and returns the result.
   fn divide(&self, other: Self) -> Self;
+
+  /// Returns the product of two complex numbers.
   fn multiply(&self, other: &Self) -> Self;
+
+  /// Returns the sine of the complex number using Euler's formula.
   fn sine(&self) -> Complex;
+
+  /// Returns the square of the complex number.
   fn square(&self) -> Complex;
+
+  /// Returns the squared magnitude (norm) of the complex number.
   fn square_norm(&self) -> f64;
+
+  /// Returns the difference between two complex numbers.
   fn subtract(&self, other: &Self) -> Self;
 }
 

@@ -1,7 +1,6 @@
 use std::{io, process::exit};
 
 use crate::connect::handle_connect_command;
-use crate::generate::handle_generate_locally;
 
 pub fn read_user_input(prompt: &str) -> String {
     print!("{}", prompt);
@@ -20,7 +19,6 @@ pub fn run() -> Result<(), Box<dyn std::error::Error>> {
         match input.as_str() {
             "exit" => exit(0),
             "worker --help" => print_help(),
-            "worker generate locally" => handle_generate_locally()?,
             cmd if cmd.starts_with("worker connect ") => {
                 handle_connect_command(cmd)?;
             }
@@ -35,5 +33,4 @@ fn print_help() {
     println!("\nAvailable Commands:");
     println!("  worker --help                 : Show this help menu");
     println!("  worker connect <ip:port>      : Connect to a fractal server");
-    println!("  worker generate locally       : Generate all fractals locally (WIP)\n");
 }
